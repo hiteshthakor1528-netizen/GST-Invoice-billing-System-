@@ -1,0 +1,645 @@
+/* ==========================================
+   GST Invoice Billing System - style.css
+========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Global Reset */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+:root{
+    --primary:#2563eb;
+    --primary-dark:#1d4ed8;
+    --secondary:#06b6d4;
+    --success:#22c55e;
+    --danger:#ef4444;
+    --warning:#f59e0b;
+    --text:#222;
+    --text-light:#555;
+    --white:#ffffff;
+    --bg:#eef3f9;
+    --card-bg:rgba(255,255,255,.7);
+    --border:rgba(0,0,0,.1);
+    --shadow:0 8px 25px rgba(0,0,0,.08);
+    --radius:18px;
+}
+
+body.dark{
+    --text:#f1f5f9;
+    --text-light:#cbd5e1;
+    --bg:#0f172a;
+    --card-bg:rgba(17,25,40,.8);
+    --border:rgba(255,255,255,.08);
+    --shadow:0 8px 30px rgba(0,0,0,.45);
+}
+
+body{
+    background:linear-gradient(135deg,#c7d2fe,#dbeafe,#cffafe);
+    min-height:100vh;
+    color:var(--text);
+    transition:.3s ease-in-out;
+    padding-bottom: 50px;
+}
+
+body.dark{
+    background:linear-gradient(135deg,#020617,#0f172a,#1e293b);
+}
+
+/* Scaffolding Container */
+.container{
+    width:95%;
+    max-width:1450px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Header UI */
+header{
+    width:100%;
+    position:sticky;
+    top:0;
+    z-index:999;
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    background:rgba(255,255,255,.2);
+    border-bottom:1px solid rgba(255,255,255,.25);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+body.dark header{
+    background:rgba(15,23,42,.65);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo h1 {
+    font-size: 22px;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+}
+
+body.dark .logo h1 {
+    color: #60a5fa;
+}
+
+.logo p {
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+.header-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.header-buttons button, .product-actions button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: .2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+#themeBtn {
+    background: var(--card-bg);
+    color: var(--text);
+}
+
+#printBtn {
+    background: var(--primary);
+    color: #fff;
+}
+
+#printBtn:hover {
+    background-color: var(--primary-dark);
+}
+
+#clearBtn {
+    background: var(--danger);
+    color: #fff;
+}
+
+#clearBtn:hover {
+    background-color: #dc2626;
+}
+
+/* Card layout */
+.card{
+    background:var(--card-bg);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:25px;
+}
+
+.card h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+    color: var(--primary);
+}
+
+body.dark .card h2 {
+    color: #60a5fa;
+}
+
+.required {
+    color: var(--danger);
+}
+
+/* Grids layout */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.grid .full {
+    grid-column: 1 / -1;
+}
+
+.invoice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 18px;
+}
+
+.card label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text-light);
+}
+
+/* Inputs & Form Fields Controls */
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,.15);
+    background: rgba(255,255,255,.8);
+    color: var(--text);
+    outline: none;
+    transition: .2s ease;
+    font-size: 14px;
+}
+
+body.dark input, body.dark textarea, body.dark select {
+    background: rgba(15,23,42,.6);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,.1);
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37,99,235,.2);
+}
+
+input.is-invalid, textarea.is-invalid, select.is-invalid {
+    border-color: var(--danger) !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2) !important;
+}
+
+/* Tables and Product list Styling */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    min-width: 800px;
+}
+
+.invoice-table th {
+    background: var(--primary);
+    color: #fff;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+body.dark .invoice-table th {
+    background: #1e293b;
+}
+
+.invoice-table td {
+    padding: 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+}
+
+.invoice-table tbody tr:hover {
+    background: rgba(0,0,0,0.02);
+}
+
+body.dark .invoice-table tbody tr:hover {
+    background: rgba(255,255,255,0.02);
+}
+
+.invoice-table input, .invoice-table select {
+    padding: 8px;
+}
+
+.deleteRow {
+    background: var(--danger);
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.deleteRow:hover {
+    background-color: #dc2626;
+    transform: scale(1.05);
+}
+
+/* Summary Box */
+.summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.totals {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.totals p {
+    font-size: 15px;
+    color: var(--text-light);
+}
+
+.totals p span {
+    font-weight: 600;
+    color: var(--text);
+    display: inline-block;
+    width: 150px;
+}
+
+/* History Buttons */
+.btn-save {
+    background-color: var(--success);
+    color: #fff;
+    transition: .2s;
+    border: none;
+}
+.btn-save:hover {
+    background-color: #16a34a;
+}
+
+.viewBtn {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+.viewBtn:hover { background-color: var(--primary-dark); }
+
+.editBtn {
+    background-color: var(--warning);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+.editBtn:hover { background-color: #d97706; }
+
+.deleteBtn {
+    background-color: var(--danger);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.deleteBtn:hover { background-color: #dc2626; }
+
+/* Search styling */
+.search-box {
+    margin-bottom: 15px;
+}
+
+/* Toasts UI notification */
+.toast {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: var(--primary);
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    font-weight: 500;
+    z-index: 10000;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s ease-out;
+}
+
+.toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* ==========================================
+   PRINT INVOICE STYLING (A4 PDF)
+========================================== */
+.print-only {
+    display: none;
+}
+
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 12mm 10mm;
+    }
+
+    .no-print, header, footer, .toast, .no-print * {
+        display: none !important;
+    }
+
+    body {
+        background: #fff !important;
+        color: #000 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .print-only {
+        display: block !important;
+    }
+
+    .invoice-printable {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+        font-size: 11px;
+        line-height: 1.4;
+        color: #000;
+        background-color: #fff;
+        border: 2px solid #000;
+        box-sizing: border-box;
+    }
+
+    .print-header {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        border-bottom: 1px solid #000;
+    }
+
+    .print-comp-info {
+        padding: 12px;
+        border-right: 1px solid #000;
+    }
+
+    .print-comp-logo {
+        font-size: 18px;
+        font-weight: 700;
+        color: #000;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 4px;
+    }
+
+    .print-comp-info p {
+        margin: 2px 0;
+        color: #000;
+    }
+
+    .print-invoice-title {
+        text-align: center;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #f9f9f9;
+    }
+
+    .print-invoice-title h1 {
+        font-size: 20px;
+        font-weight: 800;
+        margin: 0 0 8px 0;
+        color: #000;
+        letter-spacing: 1px;
+        border-bottom: 2px solid #000;
+        padding-bottom: 2px;
+    }
+
+    .print-invoice-meta-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 5px;
+    }
+
+    .print-invoice-meta-table td {
+        border: none !important;
+        padding: 2px 4px !important;
+        font-size: 11px;
+        text-align: left;
+    }
+
+    .print-meta-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        border-bottom: 1px solid #000;
+    }
+
+    .meta-box {
+        border: none;
+        padding: 10px 12px;
+    }
+
+    .meta-box h3 {
+        font-size: 11px;
+        font-weight: 700;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+        color: #000;
+        text-decoration: underline;
+    }
+
+    .meta-box p {
+        margin: 2px 0;
+    }
+
+    .print-table {
+        width: 100%;
+        border-collapse: collapse;
+        border-bottom: 1px solid #000;
+    }
+
+    .print-table th {
+        background-color: #f2f2f2 !important;
+        color: #000 !important;
+        border: 1px solid #000 !important;
+        border-top: none !important;
+        padding: 6px 4px;
+        font-weight: 700;
+        font-size: 11px;
+        text-transform: uppercase;
+    }
+
+    .print-table td {
+        border-left: 1px solid #000 !important;
+        border-right: 1px solid #000 !important;
+        border-top: none !important;
+        border-bottom: none !important;
+        padding: 6px 6px;
+        font-size: 11px;
+    }
+
+    /* Ensure table borders look solid and clean */
+    .print-table tbody tr {
+        border-bottom: 1px dashed #ccc;
+    }
+    .print-table tbody tr:last-child {
+        border-bottom: none;
+    }
+
+    .print-summary-container {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        border-bottom: 1px solid #000;
+        page-break-inside: avoid;
+    }
+
+    .summary-left-notes {
+        border-right: 1px solid #000;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .print-summary-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .print-summary-table td {
+        padding: 5px 10px;
+        border-bottom: 1px solid #000;
+        border-left: none;
+        border-right: none;
+        font-size: 11px;
+    }
+
+    .print-summary-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    .print-summary-table tr.grand-total-row {
+        font-weight: 700;
+        background-color: #f2f2f2 !important;
+        font-size: 12px;
+    }
+
+    .print-summary-table tr.grand-total-row td {
+        border-top: 1px solid #000;
+        border-bottom: none;
+    }
+
+    .print-footer-declaration {
+        padding: 10px 12px;
+        border-bottom: 1px solid #000;
+        font-size: 10px;
+    }
+
+    .print-footer-declaration h4 {
+        margin-bottom: 3px;
+        font-weight: 700;
+    }
+
+    .print-footer-declaration p {
+        margin: 1px 0;
+    }
+
+    .print-signatures {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        page-break-inside: avoid;
+    }
+
+    .sig-block {
+        text-align: center;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 95px;
+    }
+
+    .sig-block:first-child {
+        border-right: 1px solid #000;
+    }
+
+    .sig-line {
+        border-top: 1px dashed #000;
+        margin-top: auto;
+        padding-top: 4px;
+        font-weight: 600;
+        font-size: 10px;
+    }
+
+    .print-thankyou {
+        text-align: center;
+        font-weight: 600;
+        font-style: italic;
+        padding: 6px 0;
+        background-color: #f9f9f9;
+        border-top: 1px solid #000;
+        font-size: 11px;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+    animation: fadeIn 0.3s ease-out;
+}
